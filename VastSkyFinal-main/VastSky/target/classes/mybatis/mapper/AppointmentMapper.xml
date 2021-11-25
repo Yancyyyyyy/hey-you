@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.VastSky.boot.mapper.AppointmentMapper">
+
+    <!--实现insert一个预约-->
+    <!--对象中的属性可以直接取出来-->
+    <insert id="addAppointment" parameterType="com.VastSky.boot.bean.Appointment">
+        insert into 202project.appointments(aptime, place, reservation,creatorID) values (#{aptime},#{place},#{reservation},#{creatorID})
+    </insert>
+
+    <!--查询并列出全部自习室-->
+    <select id="getAllRoom" resultType="com.VastSky.boot.bean.Appointment">
+        SELECT * FROM 202project.appointments
+    </select>
+
+    <!--根据地点名获取自习室-->
+    <select id="getRoomByPlace" resultType="com.VastSky.boot.bean.Appointment">
+        SELECT * FROM 202project.appointments where place = #{place}
+    </select>
+
+    <!--getUserByIdFromUsers-->
+    <select id="getUserByIdFromUsers" parameterType="int" resultType="com.VastSky.boot.bean.User">
+        SELECT * FROM 202project.users where id = #{id}
+    </select>
+
+    <!--根据用户id查询所创建的自习室-->
+    <select id="getSelfRoom" resultType="com.VastSky.boot.bean.Appointment">
+        SELECT * FROM 202project.appointments where CreatorID = #{id}
+    </select>
+
+    <!--根据apNo查询创建者信息-->
+    <select id="getIDByapNo" resultType="com.VastSky.boot.bean.Appointment">
+        SELECT * FROM 202project.appointments where apNo = #{apNo}
+    </select>
+    <!--删除房间-->
+    <delete id="deleteRoom" parameterType="int">
+        delete from 202project.Appointments where apNo = #{No};
+    </delete>
+
+</mapper>

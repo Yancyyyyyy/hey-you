@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Reserve</title>
+
+    <link rel="stylesheet" href="../login/login.css">
+    <link rel="stylesheet" href="../theme/default.css">
+    <link rel="stylesheet" href="../login/responsive.css">
+</head>
+
+<body>
+    <div class="container">
+        <section class="logo">
+            <img src="../icons/read.svg" width="35px" height="40px" alt="">
+            <p>Study Reserve</p>
+        </section>
+        <form action="home.html" method="post" th:action="@{/login}">
+            <ul class="flex-outer">
+                <li>
+                    <div class="username">
+                        <i class="far fa-user"></i>
+                        <input type="text" id="id-login" name="id"placeholder="ID number" required>
+                    </div>
+                </li>
+                <li id="forgot">
+                    <a href="forgetPassword">Forget password?</a>
+                </li>
+                <li>
+                    <div class="password">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="pwd" id="password-login" placeholder="Password" required>
+                    </div>
+                </li>
+                <li><label style="color:black" th:text="${msg}"></label></li>
+                <li>
+                    <button id="submit-login">Sign in</button>
+                </li>
+            </ul>
+        </form>
+
+        <section class="create-account">
+            <p>Do not have account? <a id="no-have-account" href="registration.html">Create now!</a>.</p>
+        </section>
+    </div>
+
+    <div id="modal-type" class="modal-type-form">
+        <div class="modal-conteudo">
+            <a id="sign-up-cliente" class="cliente modal-sign-up">
+                <i class="far fa-user icon-modal"></i>
+                <p>Client</p>
+            </a>
+            <!--
+            <a id="sign-up-estab" class="estab modal-sign-up">
+                <i class="far fa-building icon-modal"></i>
+                <p>Sou Estabelecimento</p>
+            </a>
+            -->
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/37a6fc82c8.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./login.js"></script>
+    <script src="../../utils/sweetalert2.all.js"></script>
+
+</body>
+
+</html>

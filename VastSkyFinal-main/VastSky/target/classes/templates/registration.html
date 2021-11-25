@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Reserve Registration</title>
+
+    <link rel="stylesheet" href="../login/login.css">
+    <link rel="stylesheet" href="../theme/default.css">
+    <link rel="stylesheet" href="../login/responsive.css">
+</head>
+
+<body>
+
+<div class="container">
+    <section class="logo">
+        <img src="../icons/read.svg" width="35px" height="40px" alt="">
+        <p>Study Reserve Registration</p>
+    </section>
+    <form class="form-signin" action="login.html" method="post" th:action="@{/registration}">
+            <ul class="flex-outer">
+                <li>
+                    <div class="username">
+                        <i class="far fa-user"></i>
+                        <input type="text" id="first_name" name="first_name"placeholder="First name" required>
+                    </div>
+                    <div class="username">
+                        <i class="far fa-user"></i>
+                        <input type="text" name="last_name" id="last-name" placeholder="Last name" required>
+                    </div>
+                    <div class="username">
+                        <i class="far fa-user"></i>
+                        <input type="text" name="id" id="id" placeholder="Student ID" required>
+                    </div>
+                    <div class="password">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="pwd1" id="password-login" placeholder="Password" required>
+                    </div>
+                    <div class="password">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="pwd2" id="re-password-login" placeholder="Enter password again" required>
+                    </div>
+                <li><label style="color:black" th:text="${msg}"></label></li>
+                <li><button id="submit-login">Sign up</button></li>
+            </ul>
+        </form>
+    <section class="back-to-login">
+        <p>Already have account? <a id="have-account" href="login.html">Sign in now!</a>.</p>
+    </section>
+</div>
+
+
+
+
+
+
+
+<!-- Placed js at the end of the document so the pages load faster -->
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="https://kit.fontawesome.com/37a6fc82c8.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="./login.js"></script>
+<script src="../../utils/sweetalert2.all.js"></script>
+
+</body>
+</html>

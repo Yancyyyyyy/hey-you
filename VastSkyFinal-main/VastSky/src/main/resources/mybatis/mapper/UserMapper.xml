@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.VastSky.boot.mapper.UserMapper">
+
+    <!--实现insert一个用户-->
+    <!--对象中的属性可以直接取出来-->
+    <insert id="addUser" parameterType="com.VastSky.boot.bean.User">
+        insert into 202project.users(id, name, pwd) values (#{id},#{name},#{pwd})
+    </insert>
+
+
+    <!--实现删除一个用户-->
+    <delete id="deleteUser" parameterType="int">
+        delete from 202project.users where id = #{id};
+    </delete>
+
+    <!--getUserByIdFromUsers-->
+    <select id="getUserByIdFromUsers" parameterType="int" resultType="com.VastSky.boot.bean.User">
+        SELECT * FROM 202project.users where id = #{id}
+    </select>
+
+    <!--getUserByIdFromLegalStudentSet-->
+    <select id="getUserByIdFromLegalStudentSet" parameterType="int" resultType="com.VastSky.boot.bean.User">
+        SELECT * FROM 202project.legal_student_set where id = #{id}
+    </select>
+
+    <!--getUserByIdFromAdmins-->
+    <select id="getUserByIdFromAdmins" parameterType="int" resultType="com.VastSky.boot.bean.User">
+        SELECT * FROM 202project.admins where id = #{id}
+    </select>
+
+    <!--modifyPassword-->
+    <update id="modifyPassword" parameterType="map">
+        update 202project.users set pwd=#{pwd} where id=#{id}
+    </update>
+
+    <!--提取主页上正在学习的人数-->
+    <select id="studying" resultType="int">
+        select reservation from 202project.appointments
+    </select>
+
+    <!--提取place自习-->
+    <select id="studyPlace" resultType="string">
+        select place from 202project.appointments
+    </select>
+
+    <!--提取计划表-->
+    <select id="studyPlan" resultType="com.VastSky.boot.bean.plan">
+        select plan from 202project.plan_table
+    </select>
+
+    <!--增加新计划-->
+    <insert id="addPlan" parameterType="com.VastSky.boot.bean.plan">
+        insert into plan_table values (#{plan})
+    </insert>
+
+    <!-- updateUserInfo -->
+    <update id="updateUserInfo" parameterType="map">
+        UPDATE 202project.users SET nickname=#{nickname}, gender=#{gender}, phone=#{phone}, email=#{email} WHERE id=#{id}
+    </update>
+
+    <!--updateUserHeadImage-->
+    <update id="updateUserHeadImage" parameterType="map">
+        UPDATE 202project.users SET avatar = #{avatar} where id=#{id}
+    </update>
+
+</mapper>
